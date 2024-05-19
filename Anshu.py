@@ -1,6 +1,7 @@
 from itertools import count
 from multiprocessing.connection import wait
 from re import sub
+import sys
 from selenium import webdriver 
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -118,12 +119,13 @@ def clickby_id(driver, id, attempts=5):
     
 def clickby_xpath(driver, path, attempts=5):
     if attempts == 0:
-        driver.quit()
+        sys.exit() 
+        # driver.quit()
     try:
         driver.find_element(By.XPATH, path).click()
         print(G+"XPath Success"+C)
-    except:
-        print(RR+"XPath error"+C)
+    except :
+        print(RR+"XPath error:",C)
         sleep(1)
         clickby_xpath(driver, path, attempts-1)
 
