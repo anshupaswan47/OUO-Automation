@@ -77,7 +77,7 @@ def vpn(driver):
 
 def start(driver):
     sleep(2)
-    driver.get("https://ouo.io/wsIwgP")
+    driver.get("https://ouo.io/2HYLFY")
 
     print(B+'LINK SEARCHED'+YY)
     sleep(1)
