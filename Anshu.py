@@ -1,5 +1,5 @@
 
-import sys
+from pydoc import cli
 from selenium import webdriver 
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -7,6 +7,7 @@ from selenium.webdriver.chrome.options import Options
 from time import sleep
 from selenium_stealth import stealth
 from random import randint, choice
+import sys
 
 # urls = ['https://linkpays.in/Z7N6Vz25','https://linkpays.in/ALnKpCv','https://linkpays.in/AWptRg']
 
@@ -45,7 +46,7 @@ options.add_extension('urban.crx')
 options.add_experimental_option("detach", True)
 user_agent = choose_random_user_agent()
 options.add_argument(f"user-agent={user_agent}")
-options.add_argument("--headless=new")
+# options.add_argument("--headless=new")
 options.add_argument('--ignore-certificate-errors')
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
@@ -117,6 +118,7 @@ def clickby_id(driver, id, attempts=5):
     
 def clickby_xpath(driver, path, attempts=5):
     if attempts == 0:
+        driver.quit()
         sys.exit() 
         # driver.quit()
     try:
@@ -135,18 +137,33 @@ submit = '//*[@id="form-captcha"]/input[4]'
 getlink = '//*[@id="btn-main"]'
 confirm = ''
 
-
-
-
-
-            
+   
             
 def process(driver):
     print(B+"PROCCESS STARTED "+YY)
     # waitfor(here) 
     sleep(3)  
     id="btn-main"
-    clickby_xpath(driver,here)
+    try:
+        here1 =  driver.find_element(By.XPATH,value=here)
+    except:
+        pass
+    try:
+        here2 = driver.find_element(By.XPATH,value=here2)
+    except:
+        pass
+    if here1:
+        try:
+            here1.click()
+        except:
+            pass
+    elif here2:
+        try:
+            here2.click()
+        except:
+            pass
+    else:
+        clickby_id(driver,id)
     waitfor(textx)
     driver.find_element(by=By.XPATH,value=textx).send_keys("Hello")
     
@@ -160,7 +177,7 @@ def process(driver):
     else:
         clickby_xpath(driver,getlink)
     
-    sleep(10)
+    sleep(6)
     save_used_user_agent(user_agent)
     print("USER AGENT SAVED")
     driver.quit()
