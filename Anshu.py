@@ -1,6 +1,4 @@
-from itertools import count
-from multiprocessing.connection import wait
-from re import sub
+
 import sys
 from selenium import webdriver 
 from selenium.common.exceptions import NoSuchElementException
