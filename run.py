@@ -3,6 +3,7 @@ import sys
 import time
 import os
 
+os.system("pip install selenium_stealth selenium")
 def run_main_infinite():
     i = 0
     e = 0
