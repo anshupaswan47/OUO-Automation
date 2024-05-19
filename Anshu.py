@@ -111,11 +111,7 @@ submit = '//*[@id="form-captcha"]/input[4]'
 getlink = '//*[@id="btn-main"]'
 confirm = ''
 
-email_path='//*[@id="auth-content"]/div/section/form/div[1]/input'
-pass_path = '//*[@id="auth-content"]/div/section/form/div[2]/input'
-signin_path = '//*[@id="auth-content"]/div/section/form/button'
-email = 'anshu232'
-paswd = 'gajeb24317@hidelux.com'
+
 
 def process(driver):
     print(B+"PROCCESS STARTED "+YY)
@@ -140,30 +136,6 @@ def process(driver):
     sleep(4)
     save_used_user_agent(user_agent)
     print("USER AGENT SAVED")
-    view_see()
-    
-def view_see():
-    waitfor(email_path)
-    try:
-        driver.find_element(by=By.XPATH,value=email_path).send_keys(email)
-        print(B+"Email DOne")
-    except:
-        pass
-    try:
-        driver.find_element(by=By.XPATH,value=pass_path).send_keys(paswd)
-        print(B+"Password Done")
-    except:
-        pass
-    
-    clickby_xpath(driver,signin_path)
-    
-    xpath = '//*[@id="content"]/section/section/div/div[1]/span'
-    waitfor(xpath)
-    print("SuccessFully Login")
-    element = driver.find_element(By.XPATH, xpath)
-    number_string = element.text
-    new_number = int(number_string)
-    print(YY,new_number,C)
     driver.quit()
 
 vpn(driver)
