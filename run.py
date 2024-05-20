@@ -24,12 +24,12 @@ def run_main_infinite():
         except subprocess.CalledProcessError as err:
             e += 1
             print(f"An error occurred: {err}")
-            break  # Exit the loop if an error occurs
+            #break  # Exit the loop if an error occurs
         
         except Exception as ex:
             e += 1
             print(f"An unexpected error occurred: {ex}")
-            break  # Exit the loop if an unexpected error occurs
+            #break  # Exit the loop if an unexpected error occurs
         
         time.sleep(1)
 
